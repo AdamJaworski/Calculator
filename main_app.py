@@ -6,7 +6,7 @@ GREY = '#1c1c1c'
 LIGHT_GREY = '#3b3b3b'
 ORANGE = '#c25d0a'
 APP_WIDTH = 300
-APP_HEIGHT = 500
+APP_HEIGHT = 480
 FONT = ('Roboto', 40)
 
 SYMBOLS = {
@@ -90,7 +90,18 @@ class App(ctk.CTk):
         self.update_display()
 
     def change_current_number_symbol(self):
-        pass
+        if self.symbol is None:
+            if self.first_number[0] == '-':
+                self.first_number = self.first_number[1:]
+            else:
+                self.first_number = '-' + self.first_number
+        else:
+            if self.second_number[0] == '-':
+                self.second_number = self.second_number[1:]
+            else:
+                self.second_number = '-' + self.second_number
+
+        self.update_display()
 
     def calc(self):
         if self.second_number == '':
